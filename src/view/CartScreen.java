@@ -8,8 +8,12 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import model.bean.Produto;
 import model.dao.ProdutoDAO;
+import qr_code.Leitor;
 
 public class CartScreen extends javax.swing.JFrame {
+    
+    //Chamando Classe leitor 
+    Leitor telaLeitor = new Leitor();
     
     private int qtd;
     private Produto[] arrProd;
@@ -469,6 +473,7 @@ public class CartScreen extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         limparCarrinho = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        bQrCode = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -878,6 +883,13 @@ public class CartScreen extends javax.swing.JFrame {
             }
         });
 
+        bQrCode.setText("QR CODE");
+        bQrCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bQrCodeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -888,6 +900,8 @@ public class CartScreen extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(limparCarrinho)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bQrCode, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46)
                         .addComponent(jButton1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
@@ -1142,12 +1156,15 @@ public class CartScreen extends javax.swing.JFrame {
                             .addComponent(voltar)
                             .addComponent(avancar))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(limparCarrinho))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(limparCarrinho))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2)
+                        .addContainerGap())
+                    .addComponent(bQrCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1695,6 +1712,10 @@ public class CartScreen extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void bQrCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bQrCodeActionPerformed
+        telaLeitor.setVisible(true);
+    }//GEN-LAST:event_bQrCodeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1748,6 +1769,7 @@ public class CartScreen extends javax.swing.JFrame {
     private javax.swing.JButton asc7;
     private javax.swing.JButton asc8;
     private javax.swing.JButton avancar;
+    private javax.swing.JButton bQrCode;
     private javax.swing.JButton desc1;
     private javax.swing.JButton desc2;
     private javax.swing.JButton desc3;
